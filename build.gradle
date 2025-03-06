@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.highway'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.testng:testng:7.11.0'
+    implementation 'io.appium:java-client:9.4.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.29.0'
+}
+
+sourceSets {
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+        resources {
+            srcDirs = ['src/test/resources']
+        }
+    }
+}
+
+test {
+    useTestNG() {
+        suites 'src/test/resources/testng.xml'
+    }
+
+    testLogging {
+        events "passed", "skipped", "failed"
+        showStackTraces true
+        exceptionFormat "full"
+    }
+}

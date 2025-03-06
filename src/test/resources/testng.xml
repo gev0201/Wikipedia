@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestSuiteWiki" parallel="tests" thread-count="2">
+    <test name="Android1">
+        <parameter name="udid" value="R9WX204W6XL"/>
+        <parameter name="port" value="4723"/>
+        <classes>
+            <class name="tests.WikipediaTests"/>
+        </classes>
+    </test>
+    <test name="Android2">
+        <parameter name="udid" value="R9WX204W6XP"/>
+        <parameter name="port" value="4724"/>
+        <classes>
+            <class name="tests.WikipediaTests"/>
+        </classes>
+    </test>
+</suite>
