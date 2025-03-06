@@ -25,6 +25,7 @@ public class WikipediaTests {
         Driver.quitAppiumDriver();
     }
 
+
     @Test
     public void testHomeScreenDisplayed() {
         WikiHomePage wikiHomePage = new WikiHomePage();
