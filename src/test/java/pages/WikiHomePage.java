@@ -13,13 +13,22 @@ public class WikiHomePage {
     private final AppiumDriver appiumDriver;
 
     // WikiHomePage locators
-    private final By title = By.id("org.wikipedia:id/main_toolbar_wordmark");
-    private final By explore = By.id("org.wikipedia:id/nav_tab_explore");
-    private final By searchInput = By.id("org.wikipedia:id/search_container");
-    private final By skipStartPage = By.id("org.wikipedia:id/fragment_onboarding_skip_button");
+    private By title;
+    private By explore;
+    private By searchInput;
+    private By skipStartPage;
 
     public WikiHomePage() {
         this.appiumDriver = Driver.getAppiumDriver();
+        String platform = Driver.getPlatform();
+        if (platform.equalsIgnoreCase("android")) {
+            title = By.id("org.wikipedia:id/main_toolbar_wordmark");
+            explore = By.id("org.wikipedia:id/nav_tab_explore");
+            searchInput = By.id("org.wikipedia:id/search_container");
+            skipStartPage = By.id("org.wikipedia:id/fragment_onboarding_skip_button");
+        } else if (platform.equalsIgnoreCase("ios")) {
+            // Here should be IOS locators
+        }
     }
 
     public void skipWikiStartUpPage() {
@@ -28,7 +37,6 @@ public class WikiHomePage {
         } catch (NoSuchElementException e) {
             log.info("No skip button found > Continue...");
         }
-
     }
 
     public boolean isHomeTitleDisplayed() {

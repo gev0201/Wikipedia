@@ -14,10 +14,14 @@ import java.net.MalformedURLException;
 
 public class WikipediaTests {
 
+    private WikiHomePage wikiHomePage;
+
     @BeforeClass
-    @Parameters({"udid", "port"})
-    public void setUp(String udid, String port) throws MalformedURLException {
+    @Parameters({"udid", "port", "platform"})
+    public void setUp(String udid, String port, String platform) throws MalformedURLException {
+        Driver.setPlatform(platform);
         Driver.initDriver(udid, port);
+        wikiHomePage = new WikiHomePage();
     }
 
     @AfterClass
@@ -25,21 +29,18 @@ public class WikipediaTests {
         Driver.quitAppiumDriver();
     }
 
-
     @Test
     public void testHomeScreenDisplayed() {
-        WikiHomePage wikiHomePage = new WikiHomePage();
         wikiHomePage.skipWikiStartUpPage();
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(wikiHomePage.isHomeTitleDisplayed(), "Wiki home title not found or page not loaded");
-        softAssert.assertTrue(wikiHomePage.isExploreTabDisplayed(), "Explore tab not found or page not loaded");
-        softAssert.assertTrue(wikiHomePage.isSearchElementDisplayed(), "Search element not found or page not loaded");
+        softAssert.assertTrue(wikiHomePage.isHomeTitleDisplayed(), "Wiki title not found or home page not loaded");
+        softAssert.assertTrue(wikiHomePage.isExploreTabDisplayed(), "Explore tab not found");
+        softAssert.assertTrue(wikiHomePage.isSearchElementDisplayed(), "Search element not found");
         softAssert.assertAll();
     }
 
     @Test(dependsOnMethods = "testHomeScreenDisplayed")
     public void testSearchArticle() throws InterruptedException {
-        WikiHomePage wikiHomePage = new WikiHomePage();
         SearchPage searchPage = wikiHomePage.clickOnSearch()
                 .enterSearchKeyword("Mountains of Armenia");
 

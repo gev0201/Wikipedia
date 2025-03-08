@@ -10,25 +10,31 @@ public class ResultPage {
     private final AppiumDriver appiumDriver;
 
     // ResultPage Locators
-    private final By articleTitle = By.xpath("//android.widget.TextView[@text='Mountains of Armenia']");
-    private final By articlePageLastText = By.xpath("//android.widget.TextView[@text='View article in browser']");
+    private By articleTitle;
+    private By articlePageLastText;
 
     // Class constants
     private static final String PAGE_LAST_TEXT = "View article in browser";
 
     public ResultPage() {
         this.appiumDriver = Driver.getAppiumDriver();
+        String platform = Driver.getPlatform();
+        if (platform.equalsIgnoreCase("android")) {
+            articleTitle = By.xpath("//android.widget.TextView[@text='Mountains of Armenia']");
+            articlePageLastText = By.xpath("//android.widget.TextView[@text='View article in browser']");
+        } else if (platform.equalsIgnoreCase("ios")) {
+            // Here should be IOS locators
+        }
     }
 
     public String getArticleTitle() {
         return appiumDriver.findElement(articleTitle).getText();
     }
 
-    public ResultPage scrollToBottom() {
+    public void scrollToBottom() {
         appiumDriver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(" +
                         "new UiSelector().textContains(\"" + PAGE_LAST_TEXT + "\"))"));
-        return this;
     }
 
     public boolean isPageLastTextVisible() {

@@ -13,11 +13,18 @@ public class SearchPage {
     private final AppiumDriver appiumDriver;
 
     // SearchPage Locators
-    private final By searchInput = By.id("org.wikipedia:id/search_src_text");
-    private final By searchResults = By.className("android.widget.TextView");
+    private By searchInput;
+    private By searchResults;
 
     public SearchPage() {
         this.appiumDriver = Driver.getAppiumDriver();
+        String platform = Driver.getPlatform();
+        if (platform.equalsIgnoreCase("android")) {
+            searchInput = By.id("org.wikipedia:id/search_src_text");
+            searchResults = By.className("android.widget.TextView");
+        } else if (platform.equalsIgnoreCase("ios")) {
+            // Here should be IOS locators
+        }
     }
 
     public SearchPage enterSearchKeyword(String query) {
@@ -51,5 +58,4 @@ public class SearchPage {
             newPageSource = appiumDriver.getPageSource();
         }
     }
-
 }
