@@ -5,9 +5,11 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +39,7 @@ public class Driver {
         return platform;
     }
 
-   // Init Appium Driver
+    // Init Appium Driver
     public static void initDriver(String udid, String port) throws MalformedURLException {
         if (threadLocalDriver.get() != null) {
             return;
@@ -94,7 +96,7 @@ public class Driver {
 
     public static void quitAppiumDriver() {
         AppiumDriver appiumDriver = threadLocalDriver.get();
-        if (appiumDriver != null && appiumDriver.getSessionId() != null ) {
+        if (appiumDriver != null && appiumDriver.getSessionId() != null) {
             appiumDriver.quit();
             threadLocalDriver.remove();
             threadLocalPlatform.remove();

@@ -28,7 +28,7 @@ public class WikipediaTests {
         wikiHomePage = new WikiHomePage();
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         logger.info("Tearing down test");
         Driver.quitAppiumDriver();
