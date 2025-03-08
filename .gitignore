@@ -6,6 +6,11 @@ build/
 
 ### IntelliJ IDEA ###
 .idea/*
+.idea/codeStyles.xml
+.idea/gradle.xml
+.idea/misc.xml
+.idea/Project.xml
+.idea/vcs.xml
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
