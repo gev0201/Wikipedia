@@ -8,20 +8,20 @@
             <class name="tests.WikipediaTests"/>
         </classes>
     </test>
-<!--    <test name="Android2">-->
-<!--        <parameter name="udid" value="bi5d8twcaabqhufu"/>-->
-<!--        <parameter name="port" value="4724"/>-->
-<!--        <parameter name="platform" value="android"/>-->
-<!--        <classes>-->
-<!--            <class name="tests.WikipediaTests"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="iOS1">-->
-<!--        <parameter name="udid" value="IOS_UDID"/>-->
-<!--        <parameter name="port" value="4725"/>-->
-<!--        <parameter name="platform" value="ios"/>-->
-<!--        <classes>-->
-<!--            <class name="tests.WikipediaTests"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Android2">
+        <parameter name="udid" value="bi5d8twcaabqhufu"/>
+        <parameter name="port" value="4724"/>
+        <parameter name="platform" value="android"/>
+        <classes>
+            <class name="tests.WikipediaTests"/>
+        </classes>
+    </test>
+    <test name="iOS1">
+        <parameter name="udid" value="IOS_UDID"/>
+        <parameter name="port" value="4725"/>
+        <parameter name="platform" value="ios"/>
+        <classes>
+            <class name="tests.WikipediaTests"/>
+        </classes>
+    </test>
 </suite>

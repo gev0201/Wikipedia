@@ -9,16 +9,20 @@ import pages.ResultPage;
 import pages.WikiHomePage;
 import pages.SearchPage;
 import utils.Driver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.MalformedURLException;
 
 public class WikipediaTests {
 
+    private static final Logger logger = LoggerFactory.getLogger(WikipediaTests.class);
     private WikiHomePage wikiHomePage;
 
     @BeforeClass
     @Parameters({"udid", "port", "platform"})
     public void setUp(String udid, String port, String platform) throws MalformedURLException {
+        logger.info("Setting up test for platform: {}", platform);
         Driver.setPlatform(platform);
         Driver.initDriver(udid, port);
         wikiHomePage = new WikiHomePage();
@@ -26,11 +30,13 @@ public class WikipediaTests {
 
     @AfterClass
     public void tearDown() {
+        logger.info("Tearing down test");
         Driver.quitAppiumDriver();
     }
 
     @Test
     public void testHomeScreenDisplayed() {
+        logger.info("Testing home screen displayed");
         wikiHomePage.skipWikiStartUpPage();
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(wikiHomePage.isHomeTitleDisplayed(), "Wiki title not found or home page not loaded");
@@ -41,6 +47,7 @@ public class WikipediaTests {
 
     @Test(dependsOnMethods = "testHomeScreenDisplayed")
     public void testSearchArticle() throws InterruptedException {
+        logger.info("Testing search article");
         SearchPage searchPage = wikiHomePage.clickOnSearch()
                 .enterSearchKeyword("Mountains of Armenia");
 
@@ -54,6 +61,7 @@ public class WikipediaTests {
 
     @Test(dependsOnMethods = "testSearchArticle")
     public void testScrollPage() {
+        logger.info("Testing scroll page");
         ResultPage articlePage = new ResultPage();
         articlePage.scrollToBottom();
         Assert.assertTrue(articlePage.isPageLastTextVisible(), "References section not found after scrolling!");

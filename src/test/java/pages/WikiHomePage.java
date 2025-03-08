@@ -9,7 +9,7 @@ import utils.Driver;
 
 public class WikiHomePage {
 
-    private static final Logger log = LoggerFactory.getLogger(WikiHomePage.class);
+    private static final Logger logger = LoggerFactory.getLogger(WikiHomePage.class);
     private final AppiumDriver appiumDriver;
 
     // WikiHomePage locators
@@ -33,25 +33,30 @@ public class WikiHomePage {
 
     public void skipWikiStartUpPage() {
         try {
+            logger.info("Skipping Wiki start up page...");
             appiumDriver.findElement(skipStartPage).click();
         } catch (NoSuchElementException e) {
-            log.info("No skip button found > Continue...");
+            logger.info("No skip button found : Continue...");
         }
     }
 
     public boolean isHomeTitleDisplayed() {
+        logger.info("Checking if Home title is displayed...");
         return appiumDriver.findElement(title).isDisplayed();
     }
 
     public boolean isExploreTabDisplayed() {
+        logger.info("Checking if Explore tab is displayed...");
         return appiumDriver.findElement(explore).isDisplayed();
     }
 
     public boolean isSearchElementDisplayed() {
+        logger.info("Checking if Search element is displayed...");
         return appiumDriver.findElement(searchInput).isDisplayed();
     }
 
     public SearchPage clickOnSearch() {
+        logger.info("Clicking on Search element...");
         appiumDriver.findElement(searchInput).click();
         return new SearchPage();
     }

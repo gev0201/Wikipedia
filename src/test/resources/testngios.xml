@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestSuiteWiki" parallel="tests" thread-count="2">
+    <test name="iOS1">
+        <parameter name="udid" value="IOS_UDID"/>
+        <parameter name="port" value="4725"/>
+        <parameter name="platform" value="ios"/>
+        <classes>
+            <class name="tests.WikipediaTests"/>
+        </classes>
+    </test>
+</suite>
