@@ -56,21 +56,24 @@ As a prerequisite you need to have the Fresh version of the `Wikipedia` app inst
 
 ***HighWayTask/***
 - src/test/java/pages/ 
-- * WikiHomePage.java 
-- * SearchPage.java 
-- * ResultPage.java
+  * WikiHomePage.java 
+  * SearchPage.java 
+  * ResultPage.java
 - tests/
-- * WikipediaTests.java
+  * WikipediaTests.java
 - utils/
-- * Driver.java
+  * Driver.java
+  * AppiumStarter
+  * ReadConfig 
 - src/test/resources/
-- * logback.xml        
-- * testng.xml
+  * logback.xml        
+  * testng.xml
+  * config.properties 
 - build.gradle          
 - gradlew                
 - gradlew.bat            
 - logs/                 
-- * appium-tests.log
+  * appium-tests.log
 
 ## Reporting
 
