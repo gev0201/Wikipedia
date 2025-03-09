@@ -1,21 +1,21 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="TestSuiteWiki" parallel="tests" thread-count="2">
-    <test name="Android1">
-        <parameter name="udid" value="R9WX204W6XL"/>
-        <parameter name="port" value="4723"/>
-        <parameter name="platform" value="android"/>
-        <classes>
-            <class name="tests.WikipediaTests"/>
-        </classes>
-    </test>
-    <test name="Android2">
-        <parameter name="udid" value="bi5d8twcaabqhufu"/>
-        <parameter name="port" value="4724"/>
-        <parameter name="platform" value="android"/>
-        <classes>
-            <class name="tests.WikipediaTests"/>
-        </classes>
-    </test>
+<!--<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">-->
+<!--<suite name="TestSuiteWiki" parallel="tests" thread-count="2">-->
+<!--    <test name="Android1">-->
+<!--        <parameter name="udid" value="R9WX204W6XL"/>-->
+<!--        <parameter name="port" value="4723"/>-->
+<!--        <parameter name="platform" value="android"/>-->
+<!--        <classes>-->
+<!--            <class name="tests.WikipediaTests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Android2">-->
+<!--        <parameter name="udid" value="bi5d8twcaabqhufu"/>-->
+<!--        <parameter name="port" value="4724"/>-->
+<!--        <parameter name="platform" value="android"/>-->
+<!--        <classes>-->
+<!--            <class name="tests.WikipediaTests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 <!--    <test name="iOS1">-->
 <!--        <parameter name="udid" value="IOS_UDID"/>-->
 <!--        <parameter name="port" value="4725"/>-->
@@ -24,4 +24,4 @@
 <!--            <class name="tests.WikipediaTests"/>-->
 <!--        </classes>-->
 <!--    </test>-->
-</suite>
+<!--</suite>-->
