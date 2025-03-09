@@ -1,16 +1,20 @@
 package tests;
 
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import org.testng.internal.collections.Pair;
 import pages.ResultPage;
-import pages.WikiHomePage;
 import pages.SearchPage;
+import pages.WikiHomePage;
+import utils.AppiumStarter;
 import utils.Driver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.net.MalformedURLException;
 
@@ -23,6 +27,7 @@ public class WikipediaTests {
     @Parameters({"udid", "port", "platform"})
     public void setUp(String udid, String port, String platform) throws MalformedURLException {
         logger.info("Setting up test for platform: {}", platform);
+        AppiumStarter.startAppiumServer(Integer.parseInt(port));
         Driver.setPlatform(platform);
         Driver.initDriver(udid, port);
         wikiHomePage = new WikiHomePage();
@@ -32,6 +37,7 @@ public class WikipediaTests {
     public void tearDown() {
         logger.info("Tearing down test");
         Driver.quitAppiumDriver();
+        AppiumStarter.stopAppiumServer();
     }
 
     @Test
@@ -48,8 +54,7 @@ public class WikipediaTests {
     @Test(dependsOnMethods = "testHomeScreenDisplayed")
     public void testSearchArticle() throws InterruptedException {
         logger.info("Testing search article");
-        SearchPage searchPage = wikiHomePage.clickOnSearch()
-                .enterSearchKeyword("Mountains of Armenia");
+        SearchPage searchPage = wikiHomePage.clickOnSearch().enterSearchKeyword("Mountains of Armenia");
 
         searchPage.waitForPageStability(3, 20);
         Pair<Boolean, WebElement> result = searchPage.isResultDisplayed("Mountains of Armenia");

@@ -3,9 +3,9 @@ package pages;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.internal.collections.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.internal.collections.Pair;
 import utils.Driver;
 
 import java.util.List;
